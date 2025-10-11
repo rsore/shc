@@ -120,10 +120,6 @@ SBDEF void sb_append_(StringBuilder *sb, const char *new_data1, ...) SB_NOEXCEPT
 // Append one character to builder
 SBDEF void sb_append_char(StringBuilder *sb, char c) SB_NOEXCEPT;
 
-// Append several characters to builder.
-#define sb_append_chars(sb_ptr, ...) sb_append_chars_((sb_ptr), __VA_ARGS__, 0)
-SBDEF void sb_append_chars_(StringBuilder *sb, char first_c, ...) SB_NOEXCEPT; // NOTE: Use sb_append_chars() without underscore suffix
-
 // Append one string builder's content to another's. 'app' is appended to 'sb'.
 SBDEF void sb_append_sb(StringBuilder *sb, StringBuilder *app) SB_NOEXCEPT;
 
@@ -237,21 +233,6 @@ sb_append_char(StringBuilder *sb, char c) SB_NOEXCEPT
 {
     sb_grow_to_fit_(sb, sb->size + 1);
     sb->buffer[sb->size++] = c;
-}
-
-SBDEF void
-sb_append_chars_(StringBuilder *sb, char first_c, ...) SB_NOEXCEPT
-{
-    va_list args;
-    va_start(args, (int)first_c);
-
-    int c = (int)first_c;
-    while (c != 0) {
-        sb_append_char(sb, (char)c);
-        c = va_arg(args, int);
-    }
-
-    va_end(args);
 }
 
 SBDEF void
