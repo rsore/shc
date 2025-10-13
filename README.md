@@ -9,8 +9,8 @@ and they are all independent of each other.
 |---------|-------------|------|
 | minitest.h | Minimal test library | https://github.com/rsore/minitest |
 | opt.h | Optional type system | https://github.com/rsore/opt |
-| sb.h | String building | https://github.com/rsore/sb |
-| sv.h | String views | https://github.com/rsore/sv |
+| str.h | String type | https://github.com/rsore/sb |
+| sv.h | String View type | https://github.com/rsore/sv |
 
 ## License
 >This is free and unencumbered software released into the public domain.
